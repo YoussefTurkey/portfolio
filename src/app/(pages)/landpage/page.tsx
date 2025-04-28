@@ -5,9 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 // importing Components
 const Persona = dynamic(() => import("@/app/components/images/Persona"));
-const Buttons = dynamic(() => import("@/app/components/button/Buttons"));
+const Buttons = dynamic(() => import("@/app/utils/button/Buttons"));
+const Title = dynamic(()=> import('@/app/utils/title/Title'))
+const SubTitle = dynamic(()=> import('@/app/utils/title/SubTitle'))
 // using Translation
 import { useLanguage } from "@/app/components/lang/LanguageProvider";
+// importing React-icons
 import { BsLinkedin } from "react-icons/bs";
 import { ImBehance2 } from "react-icons/im";
 import { FaSquareWhatsapp } from "react-icons/fa6";
@@ -77,12 +80,8 @@ const LandPage = () => {
 
       <section className="flex flex-col items-center justify-center">
         <div>
-          <p className="font-bold text-xl text-center">
-            {language === "en" ? "Get to Know Me" : "تعرف عليّ"}
-          </p>
-          <h1 className="text-[hsl(var(--secondary))] text-[55px] font-bold text-center">
-            {language === "en" ? "Biography" : "نبذة شخصية"}
-          </h1>
+          <SubTitle>{language === "en" ? "Get to Know Me" : "تعرف عليّ"}</SubTitle>
+          <Title>{language === "en" ? "Biography" : "نبذة شخصية"}</Title>
           <p
             className={`${
               language === "en" ? "text-left" : "text-right"
