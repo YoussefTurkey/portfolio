@@ -1,0 +1,79 @@
+'use client'
+// importing React components
+import Link from "next/link";
+// importing React-icons
+import { TiHome } from "react-icons/ti";
+import { FaUser } from "react-icons/fa";
+import { BsEmojiSunglasses } from "react-icons/bs";
+import { MdOutlineWorkOutline } from "react-icons/md";
+import { AiFillMessage } from "react-icons/ai";
+import { IoBook } from "react-icons/io5";
+// using Translation
+import { useLanguage } from "@/app/components/lang/LanguageProvider";
+
+const Sidebar = () => {
+
+    const { language } = useLanguage();
+
+  return (
+    <section className="container mx-auto px-0 relative">
+      <div className={`fixed top-50 ${language === 'en' ? 'right-45' : 'left-45'}`}>
+        <Link
+          href={"/"}
+          role="button"
+          className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] focus:bg-[hsl(var(--secondary))] focus:text-white hover:text-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition-all
+transition-all mb-5"
+        >
+          <TiHome />
+        </Link>
+
+        <Link
+          href={"/"}
+          role="button"
+          className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] focus:bg-[hsl(var(--secondary))] focus:text-white hover:text-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition-all
+transition-all mb-5"
+        >
+          <FaUser />
+        </Link>
+
+        <Link
+          href={"/"}
+          role="button"
+          className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] focus:bg-[hsl(var(--secondary))] focus:text-white hover:text-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition-all
+transition-all mb-5"
+        >
+          <BsEmojiSunglasses />
+        </Link>
+
+        <Link
+          href={"/"}
+          role="button"
+          className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] focus:bg-[hsl(var(--secondary))] focus:text-white hover:text-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition-all
+transition-all mb-5"
+        >
+          <MdOutlineWorkOutline />
+        </Link>
+
+        <Link
+          href={"/"}
+          role="button"
+          className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] focus:bg-[hsl(var(--secondary))] focus:text-white hover:text-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition-all
+transition-all mb-5"
+        >
+          <AiFillMessage />
+        </Link>
+
+        <Link
+          href={"/"}
+          role="button"
+          className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] focus:bg-[hsl(var(--secondary))] focus:text-white hover:text-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition-all
+transition-all"
+        >
+          <IoBook />
+        </Link>
+      </div>
+    </section>
+  );
+};
+
+export default Sidebar;
