@@ -10,15 +10,16 @@ import { useLanguage } from "@/app/components/lang/LanguageProvider";
 
 interface ButtonsProps {
   children: ReactNode;
+  href: string
 }
 
-const Buttons = ({ children }: ButtonsProps) => {
+const Buttons = ({ children, href }: ButtonsProps) => {
   const { language } = useLanguage();
 
   return (
     <div>
       <Link
-        href={"/"}
+        href={href}
         role="button"
         className={`border-1 border-[hsl(var(--secondary))] hover:text-white ${
           language === "en"
