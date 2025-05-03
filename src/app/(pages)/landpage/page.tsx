@@ -11,6 +11,13 @@ const Title = dynamic(() => import("@/app/utils/title/Title"));
 const SubTitle = dynamic(() => import("@/app/utils/title/SubTitle"));
 // using Translation
 import { useLanguage } from "@/app/components/lang/LanguageProvider";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+// import required modules
+import { Pagination } from 'swiper/modules';
 // importing React-icons
 import { BsLinkedin } from "react-icons/bs";
 import { ImBehance2, ImGift } from "react-icons/im";
@@ -340,8 +347,16 @@ const LandPage = () => {
         {/* project one */}
         <div
           className={`flex flex-col ${proj[0].style} rounded-3xl w-full h-135 py-5 px-10 my-5`}
-          onMouseEnter={() => setIsHoveredOne(true)}
-          onMouseLeave={() => setIsHoveredOne(false)}
+          onMouseEnter={() => {
+            if (typeof window !== 'undefined') {
+              setIsHoveredOne(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if (typeof window !== 'undefined') {
+              setIsHoveredOne(false);
+            }
+          }}
         >
 
           <div
@@ -368,7 +383,7 @@ const LandPage = () => {
             height={500}
             alt={proj[0].title}
             loading="lazy"
-            className="py-5 m-auto"
+            className={`py-5 m-auto ${isHoveredOne ? 'scale-105' : 'scale-100'} transition-all`}
           />
 
           <div
@@ -391,8 +406,16 @@ const LandPage = () => {
         {/* project two */}
         <div
           className={`flex flex-col ${proj[1].style} rounded-3xl w-full h-135 py-5 px-10 my-5`}
-          onMouseEnter={() => setIsHoveredTwo(true)}
-          onMouseLeave={() => setIsHoveredTwo(false)}
+          onMouseEnter={() => {
+            if (typeof window !== 'undefined') {
+              setIsHoveredTwo(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if (typeof window !== 'undefined') {
+              setIsHoveredTwo(false);
+            }
+          }}
         >
 
           <div
@@ -419,7 +442,7 @@ const LandPage = () => {
             height={500}
             alt={proj[1].title}
             loading="lazy"
-            className="py-5 m-auto"
+            className={`py-5 m-auto ${isHoveredTwo ? 'scale-105' : 'scale-100'} transition-all`}
           />
 
           <div
@@ -442,8 +465,16 @@ const LandPage = () => {
         {/* project Three */}
         <div
           className={`flex flex-col ${proj[2].style} rounded-3xl w-full h-135 py-5 px-10 my-5`}
-          onMouseEnter={() => setIsHoveredThree(true)}
-          onMouseLeave={() => setIsHoveredThree(false)}
+          onMouseEnter={() => {
+            if (typeof window !== 'undefined') {
+              setIsHoveredThree(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if (typeof window !== 'undefined') {
+              setIsHoveredThree(false);
+            }
+          }}
         >
 
           <div
@@ -470,7 +501,7 @@ const LandPage = () => {
             height={500}
             alt={proj[2].title}
             loading="lazy"
-            className="py-5 m-auto"
+            className={`py-5 m-auto ${isHoveredThree ? 'scale-105' : 'scale-100'} transition-all`}
           />
 
           <div
@@ -490,6 +521,37 @@ const LandPage = () => {
 
         </div>
 
+        <Buttons href={"/"}>
+          {language === "en" ? "View Projects" : "عرض المشاريع"}
+        </Buttons>
+      </section>
+
+      <section className="flex flex-col items-center justify-center mt-40 px-30">
+        <div>
+          <SubTitle>
+            {language === "en" ? "My Clients Opinions" : "آراء عملائي"}
+          </SubTitle>
+          <Title>{language === "en" ? "Testimonials" : "تـــزكيــة"}</Title>
+        </div>
+
+        <Swiper
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper bg-[#eee] w-full h-70"
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+          <SwiperSlide>Slide 5</SwiperSlide>
+          <SwiperSlide>Slide 6</SwiperSlide>
+          <SwiperSlide>Slide 7</SwiperSlide>
+          <SwiperSlide>Slide 8</SwiperSlide>
+          <SwiperSlide>Slide 9</SwiperSlide>
+        </Swiper>
       </section>
     </main>
   );
