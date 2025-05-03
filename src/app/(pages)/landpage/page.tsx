@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 // importing Components
 const Persona = dynamic(() => import("@/app/components/images/Persona"));
 const Buttons = dynamic(() => import("@/app/utils/button/Buttons"));
@@ -13,16 +13,19 @@ const SubTitle = dynamic(() => import("@/app/utils/title/SubTitle"));
 import { useLanguage } from "@/app/components/lang/LanguageProvider";
 // importing React-icons
 import { BsLinkedin } from "react-icons/bs";
-import { ImBehance2 } from "react-icons/im";
+import { ImBehance2, ImGift } from "react-icons/im";
 import { FaSquareWhatsapp } from "react-icons/fa6";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaTag } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
+import { AiFillBehanceCircle } from "react-icons/ai";
 
 const LandPage = () => {
   const { language } = useLanguage();
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHoveredOne, setIsHoveredOne] = useState(false);
+  const [isHoveredTwo, setIsHoveredTwo] = useState(false);
+  const [isHoveredThree, setIsHoveredThree] = useState(false);
 
   // clients imgs
   interface TClinets {
@@ -147,6 +150,86 @@ const LandPage = () => {
     ],
   };
 
+  // Portfolios
+  interface TPortfolio {
+    proj: {
+      id: number,
+      subTitle: string,
+      title: string,
+      img: string,
+      style: string,
+      preview: {
+        link: string,
+        icon: React.ReactNode
+      },
+      behance?: {
+        link: string,
+        icon: React.ReactNode
+      },
+      github?: {
+        link: string,
+        icon: React.ReactNode
+      }
+    }[]
+  }
+  const portfolio: TPortfolio = {
+    proj: [
+      {
+        id: 1,
+        subTitle: language === "en"
+          ? "Web Development"
+          : "تطوير المواقع الإلكترونية",
+        title: language === "en" ? "Spiderman Website" : "موقع Spiderman",
+        img: '/images/projects/project-1.webp',
+        style: 'bg-[#3F3F3F]',
+        preview: {
+          link: '/',
+          icon: <FiExternalLink />
+        },
+        github: {
+          link: '/',
+          icon: <FaGithub />
+        }
+      },
+      {
+        id: 2,
+        subTitle: language === "en"
+          ? "Graphic Design"
+          : "التصميم الجرافيكي",
+        title: 'JamRaise',
+        img: '/images/projects/project-3.webp',
+        style: 'bg-[#7FBFFF]',
+        preview: {
+          link: '/',
+          icon: <FiExternalLink />
+        },
+        behance: {
+          link: '/',
+          icon: <AiFillBehanceCircle />
+        },
+      },
+      {
+        id: 3,
+        subTitle: language === "en"
+          ? "Graphic Design"
+          : "التصميم الجرافيكي",
+        title: 'Coach Youssef Justin',
+        img: '/images/projects/project-2.webp',
+        style: 'bg-[#3E5463]',
+        preview: {
+          link: '/',
+          icon: <FiExternalLink />
+        },
+        behance: {
+          link: '/',
+          icon: <AiFillBehanceCircle />
+        },
+      }
+    ]
+  }
+  const proj = portfolio.proj
+
+
   return (
     <main className="container mx-auto py-10">
       <section>
@@ -194,9 +277,8 @@ const LandPage = () => {
           </SubTitle>
           <Title>{language === "en" ? "Biography" : "نبذة شخصية"}</Title>
           <p
-            className={`${
-              language === "en" ? "text-left" : "text-right"
-            } leading-loose tracking-normal max-w-[600px] mx-auto text-justify text-xl pt-3`}
+            className={`${language === "en" ? "text-left" : "text-right"
+              } leading-loose tracking-normal max-w-[600px] mx-auto text-justify text-xl pt-3`}
           >
             {language === "en" ? summary.en : summary.ar}
           </p>
@@ -247,7 +329,7 @@ const LandPage = () => {
         </div>
       </section>
 
-      <section className="flex flex-col items-center justify-center mt-40">
+      <section className="flex flex-col items-center justify-center mt-40 px-30">
         <div>
           <SubTitle>
             {language === "en" ? "My Lastest Projects" : "أخر مشاريعي"}
@@ -255,62 +337,159 @@ const LandPage = () => {
           <Title>{language === "en" ? "Portfolio" : "سابقة الأعمال"}</Title>
         </div>
 
+        {/* project one */}
         <div
-          className="flex flex-col bg-[#3F3F3F] rounded-3xl w-full h-135 p-5"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className={`flex flex-col ${proj[0].style} rounded-3xl w-full h-135 py-5 px-10 my-5`}
+          onMouseEnter={() => setIsHoveredOne(true)}
+          onMouseLeave={() => setIsHoveredOne(false)}
         >
-          {isHovered && (
-            <div
-              className={`flex flex-col items-start transition-all duration-300
-          ${
-            isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
-          }`}
-            >
-              <p className="flex items-center text-white">
-                <span
-                  className={`${language === "en" ? "pr-2" : "pl-2"} text-sm`}
-                >
-                  <FaTag />
-                </span>
-                <span>
-                  {language === "en"
-                    ? "Web Development"
-                    : "تطوير المواقع الإلكترونية"}
-                </span>
-              </p>
 
-              <h3 className="flex flex-col text-2xl py-1 text-white">
-                {language === "en" ? "Spiderman Website" : "موقع Spiderman"}
-              </h3>
-            </div>
-          )}
+          <div
+            className={`flex flex-col items-start transition-all duration-300
+            ${isHoveredOne ? "visible" : "invisible"
+              }`}
+          >
+            <p className="flex items-center text-white">
+              <span
+                className={`${language === "en" ? "pr-2" : "pl-2"} text-sm`}
+              >
+                <FaTag />
+              </span>
+              <span>{proj[0].subTitle}</span>
+            </p>
+
+            <h3 className="flex flex-col text-2xl font-bold py-1 text-white">{proj[0].title}</h3>
+          </div>
+
 
           <Image
-            src={"/images/projects/project-1.webp"}
+            src={proj[0].img}
             width={500}
             height={500}
-            alt="spider-man"
+            alt={proj[0].title}
             loading="lazy"
             className="py-5 m-auto"
           />
 
-          {isHovered && (
-            <div
-              className={`flex items-center justify-end gap-x-5 transition-all duration-300
-          ${
-            isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
-          }`}
-            >
-              <Link href={"/"} className="text-2xl text-white">
-                <FaGithub />
+          <div
+            className={`flex items-center justify-end gap-x-5 transition-all duration-300
+            ${isHoveredOne ? "visible" : "invisible"
+              }`}
+          >
+            {proj[0].github && (
+              <Link href={proj[0].github.link} className="text-2xl text-white">
+                {proj[0].github.icon}
               </Link>
-              <Link href={"/"} className="text-2xl text-white">
-                <FiExternalLink />
-              </Link>
-            </div>
-          )}
+            )}
+            <Link href={proj[0].preview.link} className="text-2xl text-white">
+              {proj[0].preview.icon}
+            </Link>
+          </div>
+
         </div>
+
+        {/* project two */}
+        <div
+          className={`flex flex-col ${proj[1].style} rounded-3xl w-full h-135 py-5 px-10 my-5`}
+          onMouseEnter={() => setIsHoveredTwo(true)}
+          onMouseLeave={() => setIsHoveredTwo(false)}
+        >
+
+          <div
+            className={`flex flex-col items-start transition-all duration-300
+            ${isHoveredTwo ? "visible" : "invisible"
+              }`}
+          >
+            <p className="flex items-center text-white">
+              <span
+                className={`${language === "en" ? "pr-2" : "pl-2"} text-sm`}
+              >
+                <FaTag />
+              </span>
+              <span>{proj[1].subTitle}</span>
+            </p>
+
+            <h3 className="flex flex-col text-2xl font-bold py-1 text-white">{proj[1].title}</h3>
+          </div>
+
+
+          <Image
+            src={proj[1].img}
+            width={500}
+            height={500}
+            alt={proj[1].title}
+            loading="lazy"
+            className="py-5 m-auto"
+          />
+
+          <div
+            className={`flex items-center justify-end gap-x-5 transition-all duration-300
+            ${isHoveredTwo ? "visible" : "invisible"
+              }`}
+          >
+            {proj[1].behance && (
+              <Link href={proj[1].behance.link} className="text-2xl text-white">
+                {proj[1].behance.icon}
+              </Link>
+            )}
+            <Link href={proj[1].preview.link} className="text-2xl text-white">
+              {proj[1].preview.icon}
+            </Link>
+          </div>
+
+        </div>
+
+        {/* project Three */}
+        <div
+          className={`flex flex-col ${proj[2].style} rounded-3xl w-full h-135 py-5 px-10 my-5`}
+          onMouseEnter={() => setIsHoveredThree(true)}
+          onMouseLeave={() => setIsHoveredThree(false)}
+        >
+
+          <div
+            className={`flex flex-col items-start transition-all duration-300
+            ${isHoveredThree ? "visible" : "invisible"
+              }`}
+          >
+            <p className="flex items-center text-white">
+              <span
+                className={`${language === "en" ? "pr-2" : "pl-2"} text-sm`}
+              >
+                <FaTag />
+              </span>
+              <span>{proj[2].subTitle}</span>
+            </p>
+
+            <h3 className="flex flex-col text-2xl font-bold py-1 text-white">{proj[2].title}</h3>
+          </div>
+
+
+          <Image
+            src={proj[2].img}
+            width={500}
+            height={500}
+            alt={proj[2].title}
+            loading="lazy"
+            className="py-5 m-auto"
+          />
+
+          <div
+            className={`flex items-center justify-end gap-x-5 transition-all duration-300
+            ${isHoveredThree ? "visible" : "invisible"
+              }`}
+          >
+            {proj[2].behance && (
+              <Link href={proj[2].behance.link} className="text-2xl text-white">
+                {proj[2].behance.icon}
+              </Link>
+            )}
+            <Link href={proj[2].preview.link} className="text-2xl text-white">
+              {proj[2].preview.icon}
+            </Link>
+          </div>
+
+        </div>
+
       </section>
     </main>
   );
