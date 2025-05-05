@@ -264,7 +264,7 @@ const LandPage = () => {
             <div
               className={`flex flex-col items-start transition-all duration-300
           ${
-            isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+            isHovered ? "visibility" : "hidden"
           }`}
             >
               <p className="flex items-center text-white">
