@@ -18,6 +18,7 @@ export default function Logo() {
         height={150}
         alt="YouTurkey11"
         loading="lazy"
+        className="w-20 md:w-35"
       />
     </Link>
   );

@@ -10,7 +10,7 @@ const Title = ({children} : SubTitleProps) => {
 
   return (
     <div>
-      <p className="font-bold text-xl text-center">
+      <p className="font-bold text-md md:text-xl text-center">
         {children}
       </p>
     </div>

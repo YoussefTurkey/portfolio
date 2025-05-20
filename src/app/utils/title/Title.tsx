@@ -10,7 +10,7 @@ const Title = ({ children } : TitleProps) => {
 
   return (
     <div>
-      <h1 className="text-[hsl(var(--secondary))] text-[55px] font-bold text-center">
+      <h1 className="text-[hsl(var(--secondary))] text-[35px] md:text-[55px] font-bold text-center">
         {children}
       </h1>
     </div>

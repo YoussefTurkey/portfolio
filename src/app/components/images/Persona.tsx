@@ -16,7 +16,7 @@ export default function Logo() {
       height={500}
       alt="Youssef Turkey"
       loading="lazy"
-      className="m-auto"
+      className="m-auto w-70 md:w-100"
     />
   );
 }

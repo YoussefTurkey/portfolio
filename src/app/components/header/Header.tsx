@@ -7,7 +7,7 @@ const Logo = dynamic(() => import("@/app/components/images/Logo"));
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between container mx-auto py-10">
+    <header className="flex items-center justify-between container mx-auto py-10 px-10 md:px-20 xl:px-0">
       {/* Language toggle btn */}
       <LangBtn />
 

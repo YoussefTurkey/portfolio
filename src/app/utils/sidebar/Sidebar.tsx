@@ -36,7 +36,7 @@ const Sidebar = () => {
   return (
     <section className="container mx-auto px-0 relative">
       <div
-        className={`fixed top-50 ${language === "en" ? "right-45" : "left-45"}`}
+        className={`hidden md:block md:fixed top-50 ${language === "en" ? "md:right-22 lg:right-20 xl:right-45" : "md:left-22 lg:left-20 xl:left-45"}`}
       >
         {sidebarIcon.btn.map((btn, i) => (
           <Link

@@ -27,8 +27,8 @@ const Buttons = ({ children, href }: ButtonsProps) => {
             : "hover:shadow-[inset_-13rem_0_0_0]"
         } hover:shadow-[hsl(var(--secondary))] duration-[400ms,700ms] transition-[color,box-shadow] flex items-center w-fit rounded-full`}
       >
-        <span className="text-2xl py-3 px-6">{children}</span>
-        <span className="text-2xl rounded-full bg-[hsl(var(--secondary))] p-4 text-white">
+        <span className="text-xl md:text-2xl py-3 px-6">{children}</span>
+        <span className="text-xl md:text-2xl rounded-full bg-[hsl(var(--secondary))] p-4 text-white">
           {language === "en" ? <IoIosArrowForward /> : <IoIosArrowBack />}
         </span>
       </Link>
