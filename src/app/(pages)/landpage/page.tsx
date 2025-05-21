@@ -331,25 +331,28 @@ const LandPage = () => {
     {
       id: 1,
       img: "/images/posts/post-01.webp",
-      title: "Graphic Design Trends 2024",
-      time: "13 May 2024",
-      tag: "Graphic Design",
+      title:
+        language === "en"
+          ? "Graphic Design Trends 2024"
+          : "ترندات التصميم الجرافيكي 2024",
+      time: language === "en" ? "13 May 2024" : "13 مايو 2024",
+      tag: language === "en" ? "Graphic Design" : "التصميم الجرافيكي",
       link: "",
     },
     {
       id: 2,
       img: "/images/posts/post-02.webp",
-      title: "Web Development",
-      time: "10 May 2024",
-      tag: "Web Development",
+      title: language === "en" ? "Web Development" : "تطوير المواقع الإلكتروني",
+      time: language === "en" ? "10 May 2024" : "10 مايو 2024",
+      tag: language === "en" ? "Web Development" : "تطوير المواقع الإلكتروني",
       link: "",
     },
     {
       id: 3,
       img: "/images/posts/post-03.webp",
-      title: "Branding",
-      time: "08 May 2024",
-      tag: "Graphic Design",
+      title: language === "en" ? "Branding" : "البراندينج",
+      time: language === "en" ? "08 May 2024" : "08 مايو 2024",
+      tag: language === "en" ? "Graphic Design" : "التصميم الجرافيكي",
       link: "",
     },
   ];
@@ -1034,6 +1037,10 @@ const LandPage = () => {
             </Link>
           ))}
         </div>
+
+        <Buttons href={"/"}>
+          {language === "en" ? "View Blogs" : "عرض المقالات"}
+        </Buttons>
       </section>
     </main>
   );

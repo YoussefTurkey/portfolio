@@ -6,6 +6,7 @@ import ClientLanguageProvider from '@/app/components/lang/ClientLanguageProvider
 import dynamic from "next/dynamic"
 // import Components
 const Header = dynamic(()=> import('@/app/components/header/Header'))
+const Footer = dynamic(()=> import('@/app/components/footer/Footer'))
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,6 +29,7 @@ export default function RootLayout({
           <ClientLanguageProvider>
             <Header />
             {children}
+            <Footer />
             </ClientLanguageProvider>
         </ClientThemeProvider>
       </body>
