@@ -11,13 +11,6 @@ const Title = dynamic(() => import("@/app/utils/title/Title"));
 const SubTitle = dynamic(() => import("@/app/utils/title/SubTitle"));
 // using Translation
 import { useLanguage } from "@/app/components/lang/LanguageProvider";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-// import required modules
-import { Pagination } from "swiper/modules";
 // importing React-icons
 import { BsLinkedin } from "react-icons/bs";
 import { ImBehance2 } from "react-icons/im";
@@ -27,6 +20,9 @@ import { FaTag } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 import { AiFillBehanceCircle } from "react-icons/ai";
+import { FaRegEnvelope } from "react-icons/fa";
+import { SiWhatsapp } from "react-icons/si";
+import { FiPhoneCall } from "react-icons/fi";
 
 const LandPage = () => {
   const { language } = useLanguage();
@@ -38,7 +34,7 @@ const LandPage = () => {
   const [isHoveredSix, setIsHoveredSix] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
   const [showGraphic, setShowGrapgic] = useState(true);
-  const [showWeb, setShowWeb] = useState(false)
+  const [showWeb, setShowWeb] = useState(false);
 
   // clients imgs
   interface TClinets {
@@ -256,9 +252,9 @@ const LandPage = () => {
         img: "/images/projects/project-4.webp",
         style: "bg-[#3F3F3F]",
         preview: {
-          link: 'https://youturkey11.com',
-          icon: <FiExternalLink />
-        }
+          link: "https://youturkey11.com",
+          icon: <FiExternalLink />,
+        },
       },
       {
         id: 2,
@@ -267,9 +263,9 @@ const LandPage = () => {
         img: "/images/projects/project-5.webp",
         style: "bg-[#7FBFFF]",
         preview: {
-          link: 'https://spot75.com',
-          icon: <FiExternalLink />
-        }
+          link: "https://spot75.com",
+          icon: <FiExternalLink />,
+        },
       },
       {
         id: 3,
@@ -278,18 +274,48 @@ const LandPage = () => {
         img: "/images/projects/project-6.webp",
         style: "bg-[#3E5463]",
         github: {
-          link: 'https://github.com/YoussefTurkey/qorra',
-          icon: <FaGithub />
+          link: "https://github.com/YoussefTurkey/qorra",
+          icon: <FaGithub />,
         },
         preview: {
-          link: 'https://qorra.vercel.app/',
-          icon: <FiExternalLink />
-        }
+          link: "https://qorra.vercel.app/",
+          icon: <FiExternalLink />,
+        },
       },
-    ]
-  }
+    ],
+  };
   const projWeb = portfolioWeb.proj;
 
+  // Contacts
+  interface IContact {
+    id: number;
+    img: React.ReactNode;
+    title: string;
+    data: string;
+    link?: string;
+  }
+  const contact: IContact[] = [
+    {
+      id: 1,
+      img: <SiWhatsapp />,
+      title: language === 'en' ? "Whatsapp Me" : "تواصلي معي",
+      data: language === 'en' ? "(+20) 127 345 1025" : "1025 345 127 (+20)",
+      link: "https://wa.me/201273451052",
+    },
+    {
+      id: 2,
+      img: <FaRegEnvelope />,
+      title: language === 'en' ? "Email Me" : "تواصلي معي",
+      data: "youssef.turkey@youturkey11.com",
+      link: 'mailto:youssef.turkey@youturkey11.com'
+    },
+    {
+      id: 3,
+      img: <FiPhoneCall />,
+      title: language === 'en' ? "Whatsapp Me" : "اتصل بي",
+      data: language === 'en' ? "(+20) 115 410 2459" : "2459 410 115 (+20)",
+    },
+  ];
 
   return (
     <main className="container mx-auto py-10">
@@ -494,7 +520,7 @@ const LandPage = () => {
               }}
             >
               <div
-                className={`flex flex-col items-start transition-all duration-300
+                className={`flex flex-col items-center md:items-start transition-all duration-300
             ${isHoveredOne ? "visible" : "invisible"}`}
               >
                 <p className="flex items-center text-white">
@@ -523,14 +549,14 @@ const LandPage = () => {
               />
 
               <div
-                className={`flex items-center justify-end gap-x-5 transition-all duration-300
+                className={`flex items-center justify-center md:justify-end gap-x-5 transition-all duration-300
             ${isHoveredOne ? "visible" : "invisible"}`}
               >
                 {projGraphic[0].behance && (
                   <Link
                     href={projGraphic[0].behance.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projGraphic[0].behance.icon}
                   </Link>
@@ -553,7 +579,7 @@ const LandPage = () => {
               }}
             >
               <div
-                className={`flex flex-col items-start transition-all duration-300
+                className={`flex flex-col items-center md:items-start transition-all duration-300
             ${isHoveredTwo ? "visible" : "invisible"}`}
               >
                 <p className="flex items-center text-white">
@@ -582,14 +608,14 @@ const LandPage = () => {
               />
 
               <div
-                className={`flex items-center justify-end gap-x-5 transition-all duration-300
+                className={`flex items-center justify-center md:justify-end gap-x-5 transition-all duration-300
             ${isHoveredTwo ? "visible" : "invisible"}`}
               >
                 {projGraphic[1].behance && (
                   <Link
                     href={projGraphic[1].behance.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projGraphic[1].behance.icon}
                   </Link>
@@ -612,7 +638,7 @@ const LandPage = () => {
               }}
             >
               <div
-                className={`flex flex-col items-start transition-all duration-300
+                className={`flex flex-col items-center md:items-start transition-all duration-300
             ${isHoveredThree ? "visible" : "invisible"}`}
               >
                 <p className="flex items-center text-white">
@@ -641,14 +667,14 @@ const LandPage = () => {
               />
 
               <div
-                className={`flex items-center justify-end gap-x-5 transition-all duration-300
+                className={`flex items-center justify-center md:justify-end gap-x-5 transition-all duration-300
             ${isHoveredThree ? "visible" : "invisible"}`}
               >
                 {projGraphic[2].behance && (
                   <Link
                     href={projGraphic[2].behance.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projGraphic[2].behance.icon}
                   </Link>
@@ -675,7 +701,7 @@ const LandPage = () => {
               }}
             >
               <div
-                className={`flex flex-col items-start transition-all duration-300
+                className={`flex flex-col items-center md:items-start transition-all duration-300
             ${isHoveredFour ? "visible" : "invisible"}`}
               >
                 <p className="flex items-center text-white">
@@ -704,14 +730,14 @@ const LandPage = () => {
               />
 
               <div
-                className={`flex items-center justify-end gap-x-5 transition-all duration-300
+                className={`flex items-center justify-center md:justify-end gap-x-5 transition-all duration-300
             ${isHoveredFour ? "visible" : "invisible"}`}
               >
                 {projWeb[0].github && (
                   <Link
                     href={projWeb[0].github.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projWeb[0].github.icon}
                   </Link>
@@ -720,7 +746,7 @@ const LandPage = () => {
                   <Link
                     href={projWeb[0].preview.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projWeb[0].preview.icon}
                   </Link>
@@ -743,7 +769,7 @@ const LandPage = () => {
               }}
             >
               <div
-                className={`flex flex-col items-start transition-all duration-300
+                className={`flex flex-col items-center md:items-start transition-all duration-300
             ${isHoveredFive ? "visible" : "invisible"}`}
               >
                 <p className="flex items-center text-white">
@@ -772,14 +798,14 @@ const LandPage = () => {
               />
 
               <div
-                className={`flex items-center justify-end gap-x-5 transition-all duration-300
+                className={`flex items-center justify-center md:justify-end gap-x-5 transition-all duration-300
             ${isHoveredFive ? "visible" : "invisible"}`}
               >
                 {projWeb[1].github && (
                   <Link
                     href={projWeb[1].github.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projWeb[1].github.icon}
                   </Link>
@@ -788,7 +814,7 @@ const LandPage = () => {
                   <Link
                     href={projWeb[1].preview.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projWeb[1].preview.icon}
                   </Link>
@@ -811,7 +837,7 @@ const LandPage = () => {
               }}
             >
               <div
-                className={`flex flex-col items-start transition-all duration-300
+                className={`flex flex-col items-center md:items-start transition-all duration-300
             ${isHoveredSix ? "visible" : "invisible"}`}
               >
                 <p className="flex items-center text-white">
@@ -840,14 +866,14 @@ const LandPage = () => {
               />
 
               <div
-                className={`flex items-center justify-end gap-x-5 transition-all duration-300
+                className={`flex items-center justify-center md:justify-end gap-x-5 transition-all duration-300
             ${isHoveredSix ? "visible" : "invisible"}`}
               >
                 {projWeb[2].github && (
                   <Link
                     href={projWeb[2].github.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projWeb[2].github.icon}
                   </Link>
@@ -856,7 +882,7 @@ const LandPage = () => {
                   <Link
                     href={projWeb[2].preview.link}
                     target="_blank"
-                    className="text-2xl text-white"
+                    className="text-3xl text-white"
                   >
                     {projWeb[2].preview.icon}
                   </Link>
@@ -873,30 +899,40 @@ const LandPage = () => {
 
       <section className="flex flex-col items-center justify-center mt-20 md:mt-40 px-5 md:px-30">
         <div>
-          <SubTitle>
-            {language === "en" ? "My Clients Opinions" : "آراء عملائي"}
-          </SubTitle>
-          <Title>{language === "en" ? "Testimonials" : "تـــزكيــة"}</Title>
+          <SubTitle>{language === "en" ? "Let's Talk!" : "راسلني"}</SubTitle>
+          <Title>{language === "en" ? "Contacts" : "قنوات التواصل"}</Title>
         </div>
 
-        <Swiper
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper bg-[#eee] w-full h-70"
-        >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
-          <SwiperSlide>Slide 8</SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide>
-        </Swiper>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 py-5">
+          {contact.map((cont) => (
+            <Link
+              key={cont.id}
+              href={cont.link ? cont.link : ""}
+              target={cont.link ? '_blank' : '_self'}
+              className={
+                "cursor-pointer border-2 border-[hsl(var(--third))] hover:border-[hsl(var(--secondary))] rounded-lg py-10 px-5 flex flex-col items-center transition-all"
+              }
+            >
+              <div className="p-3 bg-[hsl(var(--secondary))] text-white text-5xl rounded-lg w-fit">
+                {cont.img}
+              </div>
+              <h4 className="font-bold text-[hsl(var(--forth))] text-sm md:text-lg text-center py-2 capitalize">{cont.title}</h4>
+              <p className="text-[hsl(var(--forth))] text-sm md:text-lg text-center">{cont.data}</p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="my-5 flex items-center gap-6">
+          {links.lnks.map((l, i) => (
+            <Link key={i} href={l.href} target="_blank" role="button">
+              <span>{l.tag}</span>
+            </Link>
+          ))}
+        </div>
+
+        <Buttons href={"/"}>
+          {language === "en" ? "Message Me" : "راسلني"}
+        </Buttons>
       </section>
     </main>
   );
