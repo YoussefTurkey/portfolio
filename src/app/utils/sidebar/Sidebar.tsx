@@ -24,12 +24,12 @@ const Sidebar = () => {
   }
   const sidebarIcon: TSidebarIcon = {
     btn: [
-      { id: 1, href: "/", icon: <TiHome /> },
-      { id: 1, href: "/", icon: <FaUser /> },
-      { id: 1, href: "/", icon: <BsEmojiSunglasses /> },
-      { id: 1, href: "/", icon: <MdOutlineWorkOutline /> },
-      { id: 1, href: "/", icon: <AiFillMessage /> },
-      { id: 1, href: "/", icon: <IoBook /> },
+      { id: 1, href: "#", icon: <TiHome /> },
+      { id: 1, href: "#summary", icon: <FaUser /> },
+      { id: 1, href: "#skills", icon: <BsEmojiSunglasses /> },
+      { id: 1, href: "#projects", icon: <MdOutlineWorkOutline /> },
+      { id: 1, href: "#contact", icon: <AiFillMessage /> },
+      { id: 1, href: "#blog", icon: <IoBook /> },
     ],
   };
 

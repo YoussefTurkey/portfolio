@@ -23,6 +23,7 @@ import { AiFillBehanceCircle } from "react-icons/ai";
 import { FaRegEnvelope } from "react-icons/fa";
 import { SiWhatsapp } from "react-icons/si";
 import { FiPhoneCall } from "react-icons/fi";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 const LandPage = () => {
   const { language } = useLanguage();
@@ -298,22 +299,58 @@ const LandPage = () => {
     {
       id: 1,
       img: <SiWhatsapp />,
-      title: language === 'en' ? "Whatsapp Me" : "تواصلي معي",
-      data: language === 'en' ? "(+20) 127 345 1025" : "1025 345 127 (+20)",
+      title: language === "en" ? "Whatsapp Me" : "تواصلي معي",
+      data: language === "en" ? "(+20) 127 345 1025" : "1025 345 127 (+20)",
       link: "https://wa.me/201273451052",
     },
     {
       id: 2,
       img: <FaRegEnvelope />,
-      title: language === 'en' ? "Email Me" : "تواصلي معي",
+      title: language === "en" ? "Email Me" : "تواصلي معي",
       data: "youssef.turkey@youturkey11.com",
-      link: 'mailto:youssef.turkey@youturkey11.com'
+      link: "mailto:youssef.turkey@youturkey11.com",
     },
     {
       id: 3,
       img: <FiPhoneCall />,
-      title: language === 'en' ? "Whatsapp Me" : "اتصل بي",
-      data: language === 'en' ? "(+20) 115 410 2459" : "2459 410 115 (+20)",
+      title: language === "en" ? "Whatsapp Me" : "اتصل بي",
+      data: language === "en" ? "(+20) 115 410 2459" : "2459 410 115 (+20)",
+    },
+  ];
+
+  // Blog
+  interface IBlog {
+    id: number;
+    img: string;
+    title: string;
+    time: string;
+    tag: string;
+    link: string;
+  }
+  const blog: IBlog[] = [
+    {
+      id: 1,
+      img: "/images/posts/post-01.webp",
+      title: "Graphic Design Trends 2024",
+      time: "13 May 2024",
+      tag: "Graphic Design",
+      link: "",
+    },
+    {
+      id: 2,
+      img: "/images/posts/post-02.webp",
+      title: "Web Development",
+      time: "10 May 2024",
+      tag: "Web Development",
+      link: "",
+    },
+    {
+      id: 3,
+      img: "/images/posts/post-03.webp",
+      title: "Branding",
+      time: "08 May 2024",
+      tag: "Graphic Design",
+      link: "",
     },
   ];
 
@@ -367,7 +404,10 @@ const LandPage = () => {
         </div>
       </section>
 
-      <section className="flex flex-col items-center justify-center">
+      <section
+        className="flex flex-col items-center justify-center"
+        id="summary"
+      >
         <div>
           <SubTitle>
             {language === "en" ? "Get to Know Me" : "تعرف عليّ"}
@@ -395,7 +435,10 @@ const LandPage = () => {
         </Buttons>
       </section>
 
-      <section className="flex flex-col items-center justify-center mt-20 md:mt-40">
+      <section
+        className="flex flex-col items-center justify-center mt-20 md:mt-40"
+        id="skills"
+      >
         <div>
           <SubTitle>
             {language === "en" ? "What I Have?" : "ماذا أُتقن؟"}
@@ -465,7 +508,10 @@ const LandPage = () => {
         </button>
       </section>
 
-      <section className="flex flex-col items-center justify-center mt-20 md:mt-40 px-5 md:px-30">
+      <section
+        className="flex flex-col items-center justify-center mt-20 md:mt-40 px-5 md:px-30"
+        id="projects"
+      >
         <div>
           <SubTitle>
             {language === "en" ? "My Lastest Projects" : "أخر مشاريعي"}
@@ -897,7 +943,10 @@ const LandPage = () => {
         </Buttons>
       </section>
 
-      <section className="flex flex-col items-center justify-center mt-20 md:mt-40 px-5 md:px-30">
+      <section
+        className="flex flex-col items-center justify-center mt-20 md:mt-40 px-5 md:px-30"
+        id="contact"
+      >
         <div>
           <SubTitle>{language === "en" ? "Let's Talk!" : "راسلني"}</SubTitle>
           <Title>{language === "en" ? "Contacts" : "قنوات التواصل"}</Title>
@@ -908,7 +957,7 @@ const LandPage = () => {
             <Link
               key={cont.id}
               href={cont.link ? cont.link : ""}
-              target={cont.link ? '_blank' : '_self'}
+              target={cont.link ? "_blank" : "_self"}
               className={
                 "cursor-pointer border-2 border-[hsl(var(--third))] hover:border-[hsl(var(--secondary))] rounded-lg py-10 px-5 flex flex-col items-center transition-all"
               }
@@ -916,8 +965,12 @@ const LandPage = () => {
               <div className="p-3 bg-[hsl(var(--secondary))] text-white text-5xl rounded-lg w-fit">
                 {cont.img}
               </div>
-              <h4 className="font-bold text-[hsl(var(--forth))] text-sm md:text-lg text-center py-2 capitalize">{cont.title}</h4>
-              <p className="text-[hsl(var(--forth))] text-sm md:text-lg text-center">{cont.data}</p>
+              <h4 className="font-bold text-[hsl(var(--forth))] text-sm md:text-lg text-center py-2 capitalize">
+                {cont.title}
+              </h4>
+              <p className="text-[hsl(var(--forth))] text-sm md:text-lg text-center">
+                {cont.data}
+              </p>
             </Link>
           ))}
         </div>
@@ -933,6 +986,54 @@ const LandPage = () => {
         <Buttons href={"/"}>
           {language === "en" ? "Message Me" : "راسلني"}
         </Buttons>
+      </section>
+
+      <section
+        className="flex flex-col items-center justify-center mt-20 md:mt-40 px-5 md:px-30"
+        id="blog"
+      >
+        <div>
+          <SubTitle>
+            {language === "en" ? "My Recent Posts" : "آخر منشوراتي"}
+          </SubTitle>
+          <Title>{language === "en" ? "Blog" : "مدونة"}</Title>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 py-5">
+          {blog.map((blog) => (
+            <Link
+              href={blog.link}
+              key={blog.id}
+              className="bg-[hsl(var(--primary))] pb-5 rounded-xl group"
+            >
+              <div className="border-b-5 border-[hsl(var(--secondary))]">
+                <Image
+                  src={blog.img}
+                  width={500}
+                  height={500}
+                  alt={blog.title}
+                  loading="lazy"
+                  className="rounded-tl-xl rounded-tr-xl"
+                />
+              </div>
+              <h4 className="font-bold text-lg md:text-xl xl:text-2xl p-5 group-hover:text-[hsl(var(--secondary))] transition-all">
+                {blog.title}
+              </h4>
+              <p className="flex items-center gap-2 px-5 py-1">
+                <span className="text-[hsl(var(--secondary))]">
+                  <FaRegCalendarAlt />
+                </span>{" "}
+                <span>{blog.time}</span>
+              </p>
+              <p className="flex items-center gap-2 px-5 py-1">
+                <span className="text-[hsl(var(--secondary))]">
+                  <FaTag />
+                </span>{" "}
+                <span>{blog.tag}</span>
+              </p>
+            </Link>
+          ))}
+        </div>
       </section>
     </main>
   );
