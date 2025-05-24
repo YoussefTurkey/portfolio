@@ -25,7 +25,7 @@ const Buttons = ({ children, href }: ButtonsProps) => {
           language === "en"
             ? "hover:shadow-[inset_13rem_0_0_0]"
             : "hover:shadow-[inset_-13rem_0_0_0]"
-        } hover:shadow-[hsl(var(--secondary))] duration-[400ms,700ms] transition-[color,box-shadow] flex items-center w-fit rounded-full`}
+        } hover:shadow-[hsl(var(--secondary))] duration-[400ms,700ms] transition-[color,box-shadow] flex items-center w-fit rounded-full mx-auto`}
       >
         <span className="text-xl md:text-2xl py-3 px-6">{children}</span>
         <span className="text-xl md:text-2xl rounded-full bg-[hsl(var(--secondary))] p-4 text-white">

@@ -7,10 +7,8 @@ const Sidebar = dynamic(() => import("@/app/utils/sidebar/Sidebar"));
 const Main = () => {
   return (
     <>
-      <Sidebar/>
-      <main>
-        <LandPage />
-      </main>
+      <Sidebar />
+      <LandPage />
     </>
   );
 };

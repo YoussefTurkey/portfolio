@@ -962,7 +962,7 @@ const LandPage = () => {
               href={cont.link ? cont.link : ""}
               target={cont.link ? "_blank" : "_self"}
               className={
-                "cursor-pointer border-2 border-[hsl(var(--third))] hover:border-[hsl(var(--secondary))] rounded-lg py-10 px-5 flex flex-col items-center transition-all"
+                "cursor-pointer border-1 border-[hsl(var(--third))] hover:border-[hsl(var(--secondary))] rounded-lg py-10 px-5 flex flex-col items-center transition-all"
               }
             >
               <div className="p-3 bg-[hsl(var(--secondary))] text-white text-5xl rounded-lg w-fit">
@@ -986,7 +986,7 @@ const LandPage = () => {
           ))}
         </div>
 
-        <Buttons href={"/"}>
+        <Buttons href={"/contact"}>
           {language === "en" ? "Message Me" : "راسلني"}
         </Buttons>
       </section>
