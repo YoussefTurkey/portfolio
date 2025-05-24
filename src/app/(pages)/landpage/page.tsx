@@ -456,7 +456,7 @@ const LandPage = () => {
             tools.tool.slice(0, 10).map((img, i) => (
               <div
                 key={i}
-                className={`border-[1px] border-[hsl(var(--third))] rounded-2xl flex flex-col items-center justify-between p-5 md:p-10`}
+                className={`border-[1px] border-[hsl(var(--third))] hover:border-[hsl(var(--secondary))] transition-all rounded-2xl flex flex-col items-center justify-between p-5 md:p-10`}
               >
                 <Image
                   src={img.img}
@@ -475,7 +475,7 @@ const LandPage = () => {
             tools.tool.map((img, i) => (
               <div
                 key={i}
-                className={`border-[1px] border-[hsl(var(--third))] rounded-2xl flex flex-col items-center justify-between p-5 md:p-10`}
+                className={`border-[1px] border-[hsl(var(--third))] hover:border-[hsl(var(--secondary))] transition-all rounded-2xl flex flex-col items-center justify-between p-5 md:p-10`}
               >
                 <Image
                   src={img.img}
@@ -525,7 +525,7 @@ const LandPage = () => {
         <div className="flex items-center md:flex-row flex-col gap-5 py-5">
           <button
             onClick={() => {
-              setShowGrapgic(!showGraphic);
+              if(!showGraphic) setShowGrapgic(!showGraphic);
               setShowWeb(false);
             }}
             className={`border-1 border-[hsl(var(--secondary))] hover:text-white ${
@@ -539,7 +539,7 @@ const LandPage = () => {
 
           <button
             onClick={() => {
-              setShowWeb(!showWeb);
+              if(!showWeb) setShowWeb(!showWeb);
               setShowGrapgic(false);
             }}
             className={`border-1 border-[hsl(var(--secondary))] hover:text-white ${
@@ -1009,7 +1009,7 @@ const LandPage = () => {
               key={blog.id}
               className="bg-[hsl(var(--primary))] pb-5 rounded-xl group"
             >
-              <div className="border-b-5 border-[hsl(var(--secondary))]">
+              <div className="relative border-b-5 border-[hsl(var(--secondary))]">
                 <Image
                   src={blog.img}
                   width={500}
@@ -1018,6 +1018,7 @@ const LandPage = () => {
                   loading="lazy"
                   className="rounded-tl-xl rounded-tr-xl"
                 />
+                <div className="absolute inset-0 group-hover:bg-gradient-to-t from-[hsl(var(--secondary))] to-transparent pointer-events-none transition-opacity duration-200 opacity-0 group-hover:opacity-100"></div>
               </div>
               <h4 className="font-bold text-lg md:text-xl xl:text-2xl p-5 group-hover:text-[hsl(var(--secondary))] transition-all">
                 {blog.title}
