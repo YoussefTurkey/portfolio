@@ -5,7 +5,7 @@ import Link from "next/link";
 // importing Components
 const Title = dynamic(() => import("@/app/utils/title/Title"));
 const SubTitle = dynamic(() => import("@/app/utils/title/SubTitle"));
-const Buttons = dynamic(() => import("@/app/utils/button/Buttons"));
+// const Buttons = dynamic(() => import("@/app/utils/button/Buttons"));
 // using Translation
 import { useLanguage } from "@/app/components/lang/LanguageProvider";
 // importing React-Icons
@@ -16,9 +16,49 @@ import { BsLinkedin } from "react-icons/bs";
 import { ImBehance2 } from "react-icons/im";
 import { FaSquareWhatsapp } from "react-icons/fa6";
 import { FaGithubSquare } from "react-icons/fa";
+import { IoSend } from "react-icons/io5";
+// importing Form libs
+import { useForm } from "react-hook-form";
+import emailjs from "emailjs-com";
+
+type FormData = {
+  username: string;
+  email: string;
+  role: string;
+  message: string;
+};
 
 const Contact = () => {
   const { language } = useLanguage();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<FormData>();
+
+  const onSubmit = (data: FormData) => {
+    return emailjs
+      .send(
+        "service_11mdweo",
+        "template_9nr5mrl",
+        {
+          from_name: data.username,
+          from_email: data.email,
+          role: data.role,
+          message: data.message,
+        },
+        "rfywE3f7GMHbkkjXR"
+      )
+      .then(() => {
+        alert(language === "en" ? "Message sent!" : "تم إرسال الرسالة!");
+        reset();
+      })
+      .catch(() => {
+        alert(language === "en" ? "Failed to send!" : "فشل الإرسال!");
+      });
+  };
 
   // Contacts
   interface IContact {
@@ -127,40 +167,58 @@ const Contact = () => {
       <div className="my-20 w-70 md:w-150 lg:w-200">
         <Title>{language === "en" ? "Message Me" : "تواصل معي"}</Title>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
             <input
               type="text"
+              {...register("username", { required: true })}
               name="username"
-              placeholder="User Name"
+              placeholder={language === "en" ? "User Name" : "اسم المستخدم"}
               className="rounded-full border-1 border-[hsl(var(--third))] bg-[hsl(var(--third))] focus:border-[hsl(var(--secondary))] text-[hsl(var(--foreground))] px-6 py-2 outline-none transition-all duration-100"
             />
             <input
               type="email"
+              {...register("email", { required: true })}
               name="email"
-              placeholder="example@gmail.com"
+              placeholder={
+                language === "en" ? "example@gmail.com" : "بريدك الإلكتروني"
+              }
               className="rounded-full border-1 border-[hsl(var(--third))] bg-[hsl(var(--third))] focus:border-[hsl(var(--secondary))] text-[hsl(var(--foreground))] px-6 py-2 outline-none transition-all duration-100"
             />
           </div>
 
           <input
             type="text"
+            {...register("role", { required: true })}
             name="role"
-            placeholder="Your Rule"
+            placeholder={language === "en" ? "Your Role" : "وظيفتك"}
             className="rounded-full border-1 border-[hsl(var(--third))] bg-[hsl(var(--third))] focus:border-[hsl(var(--secondary))] text-[hsl(var(--foreground))] px-6 py-2 w-full outline-none transition-all duration-100"
           />
 
           <textarea
+            {...register("message", { required: true })}
             name="message"
-            cols={30}
             rows={10}
-            placeholder="Your Message..."
+            placeholder={language === "en" ? "Your Message..." : "رسالتك..."}
             className="rounded-4xl border-1 border-[hsl(var(--third))] bg-[hsl(var(--third))] focus:border-[hsl(var(--secondary))] text-[hsl(var(--foreground))] px-6 py-5 w-full outline-none transition-all duration-100 my-5"
-          ></textarea>
+          />
 
-          <Buttons href={"/"}>
-            {language === "en" ? "Message Me" : "راسلني"}
-          </Buttons>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`border-1 border-[hsl(var(--secondary))] hover:text-white cursor-pointer ${
+              language === "en"
+                ? "hover:shadow-[inset_13rem_0_0_0]"
+                : "hover:shadow-[inset_-13rem_0_0_0]"
+            } hover:shadow-[hsl(var(--secondary))] duration-[400ms,700ms] transition-[color,box-shadow] flex items-center w-fit rounded-full mx-auto`}
+          >
+            <span className="text-xl md:text-2xl py-3 px-6">
+              {language === "en" ? "Send Message" : "أرسل لي"}
+            </span>
+            <span className="text-xl md:text-2xl rounded-full bg-[hsl(var(--secondary))] p-4 text-white">
+              {language === 'en' ? <IoSend /> : <IoSend className="rotate-180" />}
+            </span>
+          </button>
         </form>
       </div>
     </main>
