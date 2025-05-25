@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang={params.lang} dir={direction}>
       <body>
         <ClientThemeProvider>
-          <ClientLanguageProvider>
+           <ClientLanguageProvider defaultLanguage={params.lang as "en" | "ar"}>
             <Header />
             {children}
             <Footer />
