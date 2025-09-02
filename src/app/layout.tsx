@@ -1,12 +1,30 @@
+// Metadata
 import type { Metadata } from "next";
+// Styles
 import "./globals.scss";
-import ClientThemeProvider from "@/app/components/theme/ClientThemeProvider";
-import ClientLanguageProvider from '@/app/components/lang/ClientLanguageProvider'
+// Fonts
+import { Inter, Cairo  } from "next/font/google";
+// Providers
+import ClientThemeProvider from "@/app/theme/ClientThemeProvider";
+import ClientLanguageProvider from "@/app/lang/ClientLanguageProvider";
 // import React components
-import dynamic from "next/dynamic"
+import dynamic from "next/dynamic";
 // import Components
-const Header = dynamic(()=> import('@/app/components/header/Header'))
-const Footer = dynamic(()=> import('@/app/components/footer/Footer'))
+const Header = dynamic(() => import("@/app/components/layout/Header"));
+const Footer = dynamic(() => import("@/app/components/layout/Footer"));
+
+// Fonts
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+const cairo = Cairo({
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"],
+  variable: "--font-cairo",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,13 +42,13 @@ export default function RootLayout({
 
   return (
     <html lang={params.lang} dir={direction}>
-      <body>
+      <body className={`${inter.variable} ${cairo.variable}`}>
         <ClientThemeProvider>
-           <ClientLanguageProvider defaultLanguage={params.lang as "en" | "ar"}>
+          <ClientLanguageProvider defaultLanguage={params.lang as "en" | "ar"}>
             <Header />
             {children}
             <Footer />
-            </ClientLanguageProvider>
+          </ClientLanguageProvider>
         </ClientThemeProvider>
       </body>
     </html>

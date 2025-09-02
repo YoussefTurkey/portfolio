@@ -5,12 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 // importing Components
-const Persona = dynamic(() => import("@/app/components/images/Persona"));
+const Persona = dynamic(() => import("@/app/components/ui/Persona"));
 const Buttons = dynamic(() => import("@/app/utils/button/Buttons"));
 const Title = dynamic(() => import("@/app/utils/title/Title"));
 const SubTitle = dynamic(() => import("@/app/utils/title/SubTitle"));
 // using Translation
-import { useLanguage } from "@/app/components/lang/LanguageProvider";
+import { useLanguage } from "@/app/lang/LanguageProvider";
 // importing React-icons
 import { BsLinkedin } from "react-icons/bs";
 import { ImBehance2 } from "react-icons/im";

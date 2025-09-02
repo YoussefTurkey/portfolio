@@ -2,7 +2,7 @@
 // importing React-Icons
 import { AiOutlineSun } from "react-icons/ai";
 import { FiMoon } from "react-icons/fi";
-import { useTheme } from "@/app/components/theme/ThemeProvider";
+import { useTheme } from "@/app/theme/ThemeProvider";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();

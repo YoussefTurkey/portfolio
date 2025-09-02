@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 // using Translation
-import { useLanguage } from "@/app/components/lang/LanguageProvider";
+import { useLanguage } from "@/app/lang/LanguageProvider";
 
 interface ButtonsProps {
   children: ReactNode;

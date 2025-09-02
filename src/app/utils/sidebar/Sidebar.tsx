@@ -9,7 +9,7 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 import { AiFillMessage } from "react-icons/ai";
 import { IoBook } from "react-icons/io5";
 // using Translation
-import { useLanguage } from "@/app/components/lang/LanguageProvider";
+import { useLanguage } from "@/app/lang/LanguageProvider";
 
 const Sidebar = () => {
   const { language } = useLanguage();

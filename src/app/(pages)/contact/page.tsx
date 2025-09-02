@@ -7,7 +7,7 @@ const Title = dynamic(() => import("@/app/utils/title/Title"));
 const SubTitle = dynamic(() => import("@/app/utils/title/SubTitle"));
 // const Buttons = dynamic(() => import("@/app/utils/button/Buttons"));
 // using Translation
-import { useLanguage } from "@/app/components/lang/LanguageProvider";
+import { useLanguage } from "@/app/lang/LanguageProvider";
 // importing React-Icons
 import { SiWhatsapp } from "react-icons/si";
 import { FiPhoneCall } from "react-icons/fi";

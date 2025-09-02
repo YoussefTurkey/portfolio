@@ -1,10 +1,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -20,9 +20,12 @@ module.exports = {
           foreground: "hsl(var(--secondary-foreground))",
         },
         third: "hsl(var(--third))",
-        forth: "hsl(var(--forth))"
+        forth: "hsl(var(--forth))",
+      },
+      fontFamily: {
+        sans: ["var(--font-cairo)"],
       },
     },
   },
   plugins: [],
-}
+};

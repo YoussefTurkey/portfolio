@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 // importing Theme file
-import { useTheme } from "@/app/components/theme/ThemeProvider";
+import { useTheme } from "@/app/theme/ThemeProvider";
 
 export default function Logo() {
   const { theme } = useTheme();

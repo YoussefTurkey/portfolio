@@ -1,7 +1,7 @@
 "use client";
 // importing React-Icons
 import { GrLanguage } from "react-icons/gr";
-import { useLanguage } from "@/app/components/lang/LanguageProvider";
+import { useLanguage } from "@/app/lang/LanguageProvider";
 
 export default function LanguageToggle() {
   const { language, setLanguage } = useLanguage();

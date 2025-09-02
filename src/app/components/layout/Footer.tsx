@@ -1,9 +1,9 @@
 'use client'
 // importing React Components
 import dynamic from "next/dynamic";
-const Logo = dynamic(() => import("@/app/components/images/Logo"));
+const Logo = dynamic(() => import("@/app/components/ui/Logo"));
 // using Translation
-import { useLanguage } from "@/app/components/lang/LanguageProvider";
+import { useLanguage } from "@/app/lang/LanguageProvider";
 
 const Footer = () => {
   const { language } = useLanguage();

@@ -1,9 +1,9 @@
 // importing React components
 import dynamic from "next/dynamic";
 // importing Components
-const ToggleBtn = dynamic(() => import("@/app/components/theme/ThemeToggle"));
-const LangBtn = dynamic(() => import('@/app/components/lang/LanguageToggle'))
-const Logo = dynamic(() => import("@/app/components/images/Logo"));
+const ToggleBtn = dynamic(() => import("@/app/theme/ThemeToggle"));
+const LangBtn = dynamic(() => import('@/app/lang/LanguageToggle'))
+const Logo = dynamic(() => import("@/app/components/ui/Logo"));
 
 const Header = () => {
   return (
